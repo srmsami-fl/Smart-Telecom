@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>যোগাযোগ | Smart Telecom, সরকারি রোড, গাইবান্ধা</title>
+<meta name="description" content="Smart Telecom-এর ঠিকানা, ফোন, WhatsApp ও ইমেইল। সরকারি রোড, গাইবান্ধা ৫৭০০। ফোন: 01917-237409।">
+<link rel="icon" href="assets/favicon.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<section class="ph"><div class="wrap">
+  <h1><span class="bn">যোগাযোগ করুন</span><span class="en">Contact us</span></h1>
+  <p><span class="bn">পণ্য, দাম বা অর্ডার নিয়ে যেকোনো প্রশ্নে আমরা পাশে আছি।</span><span class="en">Questions about products, prices or orders? We're here.</span></p>
+</div></section>
+<section><div class="wrap two" style="align-items:start">
+  <div class="cols" style="grid-template-columns:1fr">
+    <div class="box"><div class="e">📞</div><h3><span class="bn">ফোন</span><span class="en">Phone</span></h3><p><a id="c1" href="#"></a></p></div>
+    <div class="box"><div class="e">💬</div><h3>WhatsApp</h3><p><a id="c2" href="#" target="_blank" rel="noopener">+880 1917-237409</a></p></div>
+    <div class="box"><div class="e">✉</div><h3><span class="bn">ইমেইল</span><span class="en">Email</span></h3><p><a id="c3" href="#"></a></p></div>
+    <div class="box"><div class="e">📍</div><h3><span class="bn">ঠিকানা</span><span class="en">Address</span></h3><p id="c4"></p><p style="margin-top:8px"><a style="color:var(--p1)" id="c5" target="_blank" rel="noopener" href="#"><span class="bn">ম্যাপে দেখুন</span><span class="en">View on map</span></a></p></div>
+  </div>
+  <div class="box">
+    <h2 style="font-size:1.4rem"><span class="bn">মেসেজ পাঠান</span><span class="en">Send a message</span></h2>
+    <p class="note"><span class="bn">আপনার বার্তা সরাসরি আমাদের ইমেইলে পৌঁছায়। আমরা শীঘ্রই উত্তর দেব।</span><span class="en">Your message reaches our inbox directly. We'll reply soon.</span></p>
+    <form id="cf">
+      <div class="g2"><div><label><span class="bn">প্রথম নাম *</span><span class="en">First name *</span></label><input name="first_name" required autocomplete="given-name"></div><div><label><span class="bn">শেষ নাম</span><span class="en">Last name</span></label><input name="last_name" autocomplete="family-name"></div></div>
+      <div class="g2"><div><label><span class="bn">ফোন নম্বর *</span><span class="en">Phone *</span></label><input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></div><div><label><span class="bn">ইমেইল (ঐচ্ছিক)</span><span class="en">Email (optional)</span></label><input type="email" name="email" autocomplete="email"></div></div>
+      <div class="sel"><label><span class="bn">কী বিষয়ে যোগাযোগ করছেন? *</span><span class="en">What is this about? *</span></label>
+      <select name="subject" required><option value="">— বেছে নিন / Choose —</option><option>পণ্য সম্পর্কে জানতে চাই / Product enquiry</option><option>দাম জানতে চাই / Price enquiry</option><option>অর্ডার সংক্রান্ত / About my order</option><option>ডেলিভারি সংক্রান্ত / Delivery</option><option>রিটার্ন বা অভিযোগ / Return or complaint</option><option>ওয়ারেন্টি / Warranty</option><option>অন্যান্য / Other</option></select></div>
+      <label><span class="bn">আপনার বার্তা *</span><span class="en">Your message *</span></label><textarea name="message" rows="6" required placeholder="এখানে লিখুন… / Write here…"></textarea>
+      <button class="btn" style="width:100%;margin-top:16px"><span class="bn">বার্তা পাঠান ➤</span><span class="en">Send message ➤</span></button>
+      <p class="note" id="cmsg" role="status"></p>
+    </form>
+    <div class="soc" style="margin-top:18px"><a class="fb" id="s1" target="_blank" rel="noopener">Facebook</a><a class="tt" id="s2" target="_blank" rel="noopener">TikTok</a><a class="wa" id="s3" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="js/products.js"></script><script src="js/app.js"></script>
+<script>
+$("#c1").href="tel:"+SITE.phone;$("#c1").textContent=SITE.phone;
+$("#c2").href="https://wa.me/"+SITE.whatsapp;
+$("#c3").href="mailto:"+SITE.email;$("#c3").textContent=SITE.email;
+$("#c4").innerHTML=T(SITE.address[0],SITE.address[1]);
+$("#c5").href="https://www.google.com/maps/search/"+encodeURIComponent(SITE.address[1]);
+$("#s1").href=SITE.facebook;$("#s2").href=SITE.tiktok;$("#s3").href="https://wa.me/"+SITE.whatsapp;
+$("#cf").onsubmit=async e=>{e.preventDefault();const fd=new FormData(e.target);fd.append("_subject","নতুন মেসেজ – Smart Telecom: "+(fd.get("subject")||""));
+ try{const r=await fetch(SITE.formspree,{method:"POST",body:fd,headers:{Accept:"application/json"}});if(!r.ok)throw 0;e.target.reset();$("#cmsg").textContent=lang=="bn"?"ধন্যবাদ! আমরা শীঘ্রই যোগাযোগ করব।":"Thank you! We'll get back to you soon."}
+ catch(x){$("#cmsg").textContent=lang=="bn"?"পাঠানো যায়নি। সরাসরি কল করুন।":"Couldn't send. Please call us."}};
+</script>
+</body></html>
